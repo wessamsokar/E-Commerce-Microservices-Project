@@ -1,0 +1,31 @@
+# Node
+node_modules/
+npm-debug.log*
+yarn-error.log
+.pnpm-store/
+
+# Logs
+*.log
+logs/
+
+# Env
+.env
+.env.*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Build artifacts
+.dist/
+dist/
+build/
+coverage/
+
+# Docker
+**/Dockerfile
+**/.dockerignore
+
+# IDE
+.vscode/
+.idea/

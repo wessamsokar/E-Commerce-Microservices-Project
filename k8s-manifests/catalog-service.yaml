@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: catalog-service
+  namespace: ecommerce
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: catalog-service
+  template:
+    metadata:
+      labels:
+        app: catalog-service
+    spec:
+      containers:
+        - name: catalog-service
+          image: catalog-service:v1
+          ports:
+            - containerPort: 8000
+          env:
+            - name: PORT
+              value: "8000"
+            - name: DATABASE_URL
+              value: "sqlite:///./catalog.db"
+            - name: DB_HOST
+              value: ""
+            - name: DB_PORT
+              value: ""
+            - name: DB_NAME
+              value: ""
+            - name: DB_USER
+              value: ""
+            - name: DB_PASSWORD
+              value: ""
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: catalog-service
+  namespace: ecommerce
+spec:
+  selector:
+    app: catalog-service
+  ports:
+    - port: 80
+      targetPort: 8000
+  type: ClusterIP
