@@ -23,7 +23,6 @@ build/
 coverage/
 
 # Docker
-**/Dockerfile
 **/.dockerignore
 
 # IDE
